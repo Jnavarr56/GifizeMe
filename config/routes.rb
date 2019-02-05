@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :users, controllers: { 
+  devise_for :users, :skip => [:passwords, :registrations], controllers: { 
     
     omniauth_callbacks: 'users/omniauth_callbacks',
     
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     
     unauthenticated do
       root :to => "sign_in#sign_in"
+
+      get "*path" => "sign_in#sign_in"
     end
 
     authenticated do
