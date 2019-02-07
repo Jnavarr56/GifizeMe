@@ -1,14 +1,19 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import Test from './Test'
 
 class App extends React.Component {
     render () {
         return (
-            <React.Fragment>
-                <div>This is the {this.props.displayText}!</div>
-                <a className="btn btn-danger" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-            </React.Fragment>
-        )
+            <div>
+                <Switch>
+                    <Route exact path="/" component={Test} />
+                    <Route exact path="/test" component={Test} />
+                </Switch>
+            </div>
+        );
     }
 }
 
 export default App;
+

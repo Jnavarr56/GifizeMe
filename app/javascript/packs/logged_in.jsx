@@ -4,13 +4,15 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from '../logged-in/App'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App displayText={'logged-in page'} />,
+  ReactDOM.render(  
+    <Router>
+      <Route path="/" component={App} />
+    </Router>,
     document.getElementById('app'),
   )
 })
