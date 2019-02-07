@@ -5,26 +5,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import App from '../logged-in/App'
 
-const Default = props => (
-  <React.Fragment>
-    <div>This is the {props.displayText}!</div>
-    <a className="btn btn-danger" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-  </React.Fragment>
-)
-/*
-Default.defaultProps = {
-  name: 'David'
-}
-Hello.propTypes = {
-  name: PropTypes.string
-}
-
-*/
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Default displayText="logged in page" />,
+    <App displayText={'logged-in page'} />,
     document.getElementById('app'),
   )
 })
