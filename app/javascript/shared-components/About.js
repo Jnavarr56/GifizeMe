@@ -1,11 +1,11 @@
 import React from 'react'
-//import Navbar from '../Navbar'
+import Navbar from './Navbar'
 
 class About extends React.Component {
     render () {
         return (
             <React.Fragment>
-                <Navbar/ >
+                <Navbar signedIn={this.props.sessionStatus} route={this.props.location.pathname}/>
                 <h1>Stuff</h1>
                 <ul>
                     <li>Thing 1</li>

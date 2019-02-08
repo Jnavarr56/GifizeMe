@@ -1,10 +1,23 @@
 import React from 'react'
+import NavItem from './navbar/NavItem'
 
 class Navbar extends React.Component {
+
+    constructor(props) {
+        super(props);    
+        this.state = {
+            navItems: {
+                0: { text: 'Home', link: '/' },
+                1: { text: 'About', link: '/about' },
+                2: { text: 'Technology', link: 'https://github.com/Jnavarr56/GifizeMe' },
+            }
+        };
+    }
+
     render () {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a className="navbar-brand" href="#">Navbar w/ text</a>
+                <a className="navbar-brand" href="/">GifizeMe</a>
                 <button className="navbar-toggler" 
                         type="button" 
                         data-toggle="collapse" 
@@ -16,18 +29,11 @@ class Navbar extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Features</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Pricing</a>
-                    </li>
+                        {Object.keys(this.state.navItems).map(x => <NavItem key={`NI${x}`} route={this.props.route} itemInfo={this.state.navItems[x]} />)}
                     </ul>
                     <span className="navbar-text">
-                        Navbar text with an inline element
+                        {this.props.signedIn ? 'log out' : 'log in'}
+                        {/* WE NEED TO CREATE SIGN IN / SIGN OUT BUTTONS AND RENDER THEM IN THE LINE ABOVE*/}
                     </span>
                 </div>
             </nav>
@@ -36,8 +42,3 @@ class Navbar extends React.Component {
 }
 
 export default Navbar;
-
-
-/*
-<a className="btn btn-primary btn-sign-up" href="/users/auth/facebook">Sign in with <span className="badge badge-light"><i className="fab fa-facebook-f"></i></span></a>
-*/
