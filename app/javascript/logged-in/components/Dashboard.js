@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Test extends React.Component {
+class Dashboard extends React.Component {
     render () {
         return (
             <React.Fragment>
@@ -11,6 +11,6 @@ class Test extends React.Component {
     }
 }
 
-export default Test;
+export default Dashboard;
 
 

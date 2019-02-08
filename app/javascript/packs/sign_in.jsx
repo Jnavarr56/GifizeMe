@@ -4,27 +4,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-
-const Default = props => (
-  <React.Fragment>
-    <div>This is the {props.displayText}!</div>
-    <a className="btn btn-primary btn-sign-up" href="/users/auth/facebook">Sign in with <span className="badge badge-light"><i className="fab fa-facebook-f"></i></span></a>
-  </React.Fragment>
-)
-/*
-Default.defaultProps = {
-  name: 'David'
-}
-Hello.propTypes = {
-  name: PropTypes.string
-}
-
-*/
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import App from '../sign-in/App';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Default displayText="sign in page" />,
+    <Router>
+      <Route path="/" component={App} />
+    </Router>,
     document.getElementById('app'),
   )
 })
