@@ -9,10 +9,26 @@ class Navbar extends React.Component {
         this.state = {
             navItems: {
                 0: { text: 'Home', link: '/' },
-                1: { text: 'About', link: '/about' },
+                1: { text: 'About / FAQ', link: '/about' },
                 2: { text: 'Technology', link: 'https://github.com/Jnavarr56/GifizeMe' },
             }
         };
+    }
+
+    getLogLink = isSignedIn => {
+
+        if (isSignedIn) {
+
+            return <a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
+
+        }
+
+        else {
+
+            return <a href="/users/auth/facebook">Log In / Sign Up</a>;
+
+        }
+
     }
 
     render () {
@@ -33,8 +49,7 @@ class Navbar extends React.Component {
                         {Object.keys(this.state.navItems).map(x => <NavItem key={`NI${x}`} route={this.props.route} itemInfo={this.state.navItems[x]} />)}
                     </ul>
                     <span className="navbar-text">
-                        {this.props.signedIn ? 'log out' : 'log in'}
-                        {/* WE NEED TO CREATE SIGN IN / SIGN OUT BUTTONS AND RENDER THEM IN THE LINE ABOVE*/}
+                        {this.getLogLink(this.props.signedIn)}
                     </span>
                 </div>
             </nav>
