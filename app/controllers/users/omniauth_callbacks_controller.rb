@@ -9,8 +9,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
           session[:user_id] = user.id
 
-          sign_in_and_redirect user, event: :authentication #this will throw if @user is not activated
+          #sign_in_and_redirect user, event: :authentication #this will throw if @user is not activated
 
+          sign_in user, event: :authentication #this will throw if @user is not activated
+
+          redirect_to root_path
+          
           #set_flash_message(:notice, :success, kind: user.provider == "facebook" ? user.provider.capitalize : "Google") if is_navigational_format?
 
         else

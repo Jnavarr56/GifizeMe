@@ -7,26 +7,52 @@ body {
     background: linear-gradient(to left, #89fffd, #ef32d9);
     height: 100vh;
     width: 100vw;
-    opacity: 0;
     animation: FadeInBody 1s ease 0.15s 1 forwards;
     #app {
         height: 100%;
         width: 100%;
-        /*
-        div:first-child {
-            height: 100%;
-            width: 100%;
-        }
-        */
     }
 }
 * {
     font-family: 'Questrial';
 }
-
-@keyframes FadeInBody {
-    100% { opacity: 1; }
+.fade-in {
+    opacity: 0;
+    filter: blur(5px);
+    animation: FadeIn 1s ease 0s 1 forwards;
 }
+@keyframes FadeIn {
+    100% { opacity: 1;  filter: blur(0px); }
+}
+.fade-out {
+    opacity: 1;
+    filter: blur(0px);
+    animation: FadeOut 1s ease 0s 1 forwards;
+}
+@keyframes FadeOut {
+    100% { opacity: 0;  filter: blur(5px); }
+}
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner-fade {
+    height: 100%;
+    opacity: 0;
+    filter: blur(5px);
+    animation: SpinnerFade 3s ease 0s 1 forwards;
+    span {
+        height: 200px;
+        width: 200px;
+        position: relative;
+        bottom: 5%;
+    }
+}
+@keyframes SpinnerFade {
+    50% { opacity: 1;  filter: blur(0px);}
+}
+
 
 
 @import "navbar";

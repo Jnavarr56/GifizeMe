@@ -1,7 +1,7 @@
 // Place all the styles related to the SignIn controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.sign_in.sign_in {
+.sign_in.sign_in { 
     overflow: hidden;
     .container-fluid {
         height: 100%;
@@ -112,3 +112,6 @@
     100% { height: calc(263.516px * 2); width: calc(263.516px * 2); opacity: 0; }
 }
 
+.fade-in-sign-in {
+    opacity: 0;
+}

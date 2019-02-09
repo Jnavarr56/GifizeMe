@@ -6,8 +6,8 @@ class Dashboard extends React.Component {
         return (
             <React.Fragment>
                 <Navbar signedIn={true} />
-                <h1>This is the logged in page!</h1>
-                <a className="btn btn-danger" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
+                <h1 className="fade-in">This is the logged in page!</h1>
+                <a className="btn btn-danger fade-in" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
             </React.Fragment>
         );
     }

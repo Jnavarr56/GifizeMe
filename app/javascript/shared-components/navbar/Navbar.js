@@ -8,9 +8,9 @@ class Navbar extends React.Component {
         super(props);    
         this.state = {
             navItems: {
-                0: { text: 'Home', link: '/' },
-                1: { text: 'About / FAQ', link: '/about' },
-                2: { text: 'Technology', link: 'https://github.com/Jnavarr56/GifizeMe' },
+                0: { text: 'Home', alternateText: 'Dashboard', link: '/' },
+                1: { text: 'About / FAQ', alternateText: 'About / FAQ', link: '/about' },
+                2: { text: 'Technology', alternateText: 'About / FAQ', link: 'https://github.com/Jnavarr56/GifizeMe' },
             }
         };
     }
@@ -35,7 +35,7 @@ class Navbar extends React.Component {
 
         return (
 
-            <nav className="navbar navbar-expand-lg navbar-light nav-color">
+            <nav className={"navbar navbar-expand-lg navbar-light nav-color"}>
                 <Link className="navbar-brand" to="/">GifizeMe</Link>
                 <button className="navbar-toggler" 
                         type="button" 
@@ -48,7 +48,7 @@ class Navbar extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav mr-auto">
-                        {Object.keys(this.state.navItems).map(x => <NavItem key={`NI${x}`} route={this.props.route} itemInfo={this.state.navItems[x]} />)}
+                        {Object.keys(this.state.navItems).map(x => <NavItem key={`NI${x}`} useAltText={this.props.signedIn} linkPath={this.props.linkPath} itemInfo={this.state.navItems[x]} />)}
                     </ul>
                     <span className="navbar-text nav-link-animated">
                         {this.getLogLink(this.props.signedIn)}
