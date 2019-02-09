@@ -1,5 +1,6 @@
 import React from 'react'
-import Navbar from 'shared-components/Navbar'
+import Navbar from 'shared-components/navbar/Navbar'
+import SignInButton from 'shared-components/session-buttons/SignInButton'
 
 class SignIn extends React.Component {
 
@@ -9,8 +10,13 @@ class SignIn extends React.Component {
 
             <React.Fragment>
                 <Navbar signedIn={this.props.sessionStatus} route={this.props.location.pathname}/>
-                <div>This is the sign in page!</div>
-                <a className="btn btn-primary btn-sign-up" href="/users/auth/facebook">Sign in with <span className="badge badge-light"><i className="fab fa-facebook-f"></i></span></a>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="jumbotron">
+                            <SignInButton withBadge={false} classList={'btn btn-info'} />
+                        </div>
+                    </div>
+                </div>
             </React.Fragment>
         
         );

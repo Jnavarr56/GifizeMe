@@ -33,7 +33,7 @@ class Navbar extends React.Component {
 
     render () {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav className="navbar navbar-expand-lg navbar-light nav-color">
                 <Link className="navbar-brand" to="/">GifizeMe</Link>
                 <button className="navbar-toggler" 
                         type="button" 
@@ -48,7 +48,7 @@ class Navbar extends React.Component {
                     <ul className="navbar-nav mr-auto">
                         {Object.keys(this.state.navItems).map(x => <NavItem key={`NI${x}`} route={this.props.route} itemInfo={this.state.navItems[x]} />)}
                     </ul>
-                    <span className="navbar-text">
+                    <span className="navbar-text nav-link-animated">
                         {this.getLogLink(this.props.signedIn)}
                     </span>
                 </div>

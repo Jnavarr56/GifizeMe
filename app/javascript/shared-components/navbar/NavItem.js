@@ -6,7 +6,7 @@ const NavItem = props => {
     return (
 
         <li className={`nav-item ${props.route === props.itemInfo.link ? ' active' : ''}`}>
-            <Link className="nav-link" to={props.itemInfo.link}>{props.itemInfo.text}</Link>
+            <Link className="nav-link nav-link-animated" to={props.itemInfo.link}>{props.itemInfo.text}</Link>
         </li>
 
     );

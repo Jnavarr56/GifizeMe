@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from 'shared-components/Navbar'
+import Navbar from 'shared-components/navbar/Navbar'
 
 class Dashboard extends React.Component {
     render () {
