@@ -17,7 +17,7 @@ class Navbar extends React.Component {
     render () {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a className="navbar-brand" href="/">GifizeMe</a>
+                <Link className="navbar-brand" to="/">GifizeMe</Link>
                 <button className="navbar-toggler" 
                         type="button" 
                         data-toggle="collapse" 
