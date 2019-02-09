@@ -1,5 +1,5 @@
 import React from 'react'
-import NavItem from './navbar/NavItem'
+import NavItem from './NavItem'
 import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
