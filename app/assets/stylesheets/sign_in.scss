@@ -18,20 +18,20 @@
                 margin-bottom: 4rem;
                 background-color: white;
                 .sign-in-btn-landing {
-                    background-color: rgba(#00ef81, 1);
+                    background-color: rgba(white, 1);
                     //border-color: black;
                     border-radius: 0;
                     //border-width: 1.5px;
                     padding: 1.25rem;
-                    color: rgba(white, 1);
+                    color: rgba(black, 1);
                     position: relative;
                     overflow: hidden;
                     &:focus, &:active  {
                         outline: none !important;
                     }
                     &:hover {
-                        color: rgba(black, 1);
-                        background-color: rgba(white, 1);
+                        color: rgba(white, 1);
+                        background-color: rgba(#00ef81, 1);
                     }
                     
                 }
@@ -42,6 +42,7 @@
                     position: absolute;
                     transition: all 0.2s linear;
                     background: black;
+                    width: 100%;
                 } 
                 span::before, span::after{
                     content:"";
@@ -50,12 +51,13 @@
                     position: absolute;
                     transition: all 0.2s linear;
                     background: black;
+                    height: 100%;
                 }
                 .sign-in-btn-landing:hover::before, .sign-in-btn-landing:hover::after{
-                    width: 100%;
+                    width: 0%;
                 }
                 .sign-in-btn-landing:hover span::before, .sign-in-btn-landing:hover span::after{
-                    height: 100%;
+                    height: 0%;
                 }
                 .sign-in-btn-landing::before, .sign-in-btn-landing::after{
                     transition-delay: 0s;
@@ -96,7 +98,7 @@
         position: absolute;
         transform: translateX(-50%) translateY(-50%);
         animation: ClickSonar .5s ease-out 0s 1;
-        background:  #00ef81;//linear-gradient(to left, #89fffd, #ef32d9);
+        background:  white;//linear-gradient(to left, #89fffd, #ef32d9);
     }
 }
 
