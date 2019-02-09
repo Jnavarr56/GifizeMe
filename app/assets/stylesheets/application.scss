@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Hind|Questrial');
-@import "navbar";
 
 html {
     overflow: hidden;
@@ -8,19 +7,27 @@ body {
     background: linear-gradient(to left, #89fffd, #ef32d9);
     height: 100vh;
     width: 100vw;
-    overflow-y: scroll;
+    overflow: hidden;
     #app {
         height: 100%;
         width: 100%;
-        //div:first-child {
-            //min-height: 100%;
-            //min-width: 100%;
-        //}
+        div:first-child {
+            height: 100%;
+            width: 100%;
+        }
     }
 }
 * {
     font-family: 'Questrial';
 }
-.container-fluid {
-    height: 100%;
+.sign_in.sign_in {
+    .container-fluid {
+        height: 100%;
+        width: {
+
+        }
+    }
 }
+
+@import "navbar";
+@import "sign_in";
