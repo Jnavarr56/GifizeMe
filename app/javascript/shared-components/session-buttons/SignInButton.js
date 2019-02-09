@@ -79,7 +79,7 @@ class SignInButton extends React.Component {
 
                 <button onClick={this.handleClick} className={this.props.classList}>
                 
-                    <span className="sign-in-btn-text">Log In / Sign Up with Facebook</span>
+                    <span className="sign-in-btn-text-normal sign-in-btn-text">Log In / Sign Up with Facebook</span>
 
                     <div className="click-sonar" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div>
                 

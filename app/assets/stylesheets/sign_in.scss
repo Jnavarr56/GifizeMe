@@ -10,7 +10,7 @@
         justify-content: center;
         align-items: center;
         .row  {
-            min-height: 40%;
+            height: 50%;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -21,7 +21,7 @@
                 background-color: white;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-evenly;
+                justify-content: space-between;
                 align-items: center;
                 .sign-in-btn-landing {
                     background-color: rgba(white, 1);

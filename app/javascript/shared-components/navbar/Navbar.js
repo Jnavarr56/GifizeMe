@@ -25,7 +25,7 @@ class Navbar extends React.Component {
 
         else {
 
-            return <a href="/users/auth/facebook">Log In / Sign Up</a>;
+            return <a href="/users/auth/facebook">Log In / Sign Up with Facebook</a>;
 
         }
 

@@ -14,7 +14,16 @@ class SignIn extends React.Component {
                     <div className="row">
                         <div className="jumbotron">
                             <h1 className="display-4">Welcome to GifizeMe.</h1>
-                            <SignInButton withBadge={false} classList={'btn sign-in-btn-landing'} />
+                            <p className="">
+                                Take videos of yourself and have them converted to gifs.
+                                <br />
+                                <br />
+                                Store them as a library based on emojis.
+                                <br />
+                                <br />
+                                Send them to friends via FB messenger.
+                            </p>
+                            <SignInButton classList={'btn sign-in-btn-landing'} />
                         </div>
                     </div>
                 </div>
