@@ -17,18 +17,76 @@
             .jumbotron {
                 margin-bottom: 4rem;
                 background-color: white;
+                .sign-in-btn-landing {
+                    background-color: rgba(#00ef81, 1);
+                    //border-color: black;
+                    border-radius: 0;
+                    //border-width: 1.5px;
+                    padding: 1.25rem;
+                    color: rgba(white, 1);
+                    position: relative;
+                    overflow: hidden;
+                    &:focus, &:active  {
+                        outline: none !important;
+                    }
+                    &:hover {
+                        color: rgba(black, 1);
+                        background-color: rgba(white, 1);
+                    }
+                    
+                }
+                .sign-in-btn-landing::before, .sign-in-btn-landing::after{
+                    content:"";
+                    width: 0;
+                    height: 2px;
+                    position: absolute;
+                    transition: all 0.2s linear;
+                    background: black;
+                } 
+                span::before, span::after{
+                    content:"";
+                    width:2px;
+                    height:0;
+                    position: absolute;
+                    transition: all 0.2s linear;
+                    background: black;
+                }
+                .sign-in-btn-landing:hover::before, .sign-in-btn-landing:hover::after{
+                    width: 100%;
+                }
+                .sign-in-btn-landing:hover span::before, .sign-in-btn-landing:hover span::after{
+                    height: 100%;
+                }
+                .sign-in-btn-landing::before, .sign-in-btn-landing::after{
+                    transition-delay: 0s;
+                }
+                .sign-in-btn-landing span::before, .sign-in-btn-landing span::after{
+                    transition-delay: 0.2s;
+                }
+                .sign-in-btn-landing::before{
+                    right: 0;
+                    top: 0;
+                }
+                .sign-in-btn-landing::after{
+                    left: 0;
+                    bottom: 0;
+                }
+                .sign-in-btn-landing span::before{
+                    left: 0;
+                    top: 0;
+                }
+                .sign-in-btn-landing span::after{
+                    right: 0;
+                    bottom: 0;
+                }
+                .sign-in-btn-landing:hover::before, .sign-in-btn-landing:hover::after{
+                    transition-delay: 0.2s;
+                }
+                .sign-in-btn-landing:hover span::before, .sign-in-btn-landing:hover span::after{
+                    transition-delay: 0s;
+                }
             }
         }
-    }
-    .sign-in-btn-landing {
-        //background-color: rgba(0, 239, 129, 1);
-        border-color: black;
-        border-radius: 0;
-        border-width: 1.5px;
-        padding: 1.25rem;
-        color: rgba(black, 1);
-        position: relative;
-        overflow: hidden;
     }
     .click-sonar {
         height: 0;
@@ -37,7 +95,7 @@
         border-radius: 100%;
         position: absolute;
         transform: translateX(-50%) translateY(-50%);
-        animation: ClickSonar .5s linear 0s 1;
+        animation: ClickSonar .5s ease-out 0s 1;
         background:  #00ef81;//linear-gradient(to left, #89fffd, #ef32d9);
     }
 }
@@ -45,3 +103,4 @@
 @keyframes ClickSonar {
     100% { height: calc(263.516px * 2); width: calc(263.516px * 2); opacity: 0; }
 }
+
