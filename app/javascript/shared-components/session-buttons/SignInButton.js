@@ -6,7 +6,7 @@ class SignInButton extends React.Component {
         super(props);
         this.state = {
             clickSonar: { x: null, y: null },
-            oAuthLink: '/users/auth/facebook'
+            oAuthLink: { link: '/users/auth/facebook', clicked: false }
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -14,19 +14,36 @@ class SignInButton extends React.Component {
     componentDidUpdate() {
         
         
-        if (this.state.clickSonar.x) {
+        if (this.state.clickSonar.x && !this.state.oAuthLink.clicked) {
 
             setTimeout(() => {
-            
-                this.setState({clickSonar: { x: null, y: null }});
+
+                console.log('RESETTING STATE WITHOUT SONAR DIV AND MARKING THAT THE BUTTON HAS BEEN CLICKED');
+                
+                this.setState({
+                    
+                    clickSonar: { x: null, y: null },
+                    oAuthLink: { link: '/users/auth/facebook', clicked: true }
+
+                });
             
             }, 500);
     
         }
 
+        if (this.state.oAuthLink.clicked) {
+
+            console.log('REDIRECTING TO FACEBOOK OAUTH');
+
+            window.location.href = this.state.oAuthLink.link;
+            
+        }
+
     }
 
     handleClick(e) {
+
+        console.log('REGISTERING CLICK');
 
         const rect = e.currentTarget.getBoundingClientRect();
 
@@ -40,36 +57,50 @@ class SignInButton extends React.Component {
 
     render() {
 
-            if (this.state.clickSonar.x) {
+        if (!this.state.clickSonar.x && !this.state.oAuthLink.clicked) {
 
-                return (
+            return (
 
-                    <button onClick={this.handleClick} className={this.props.classList}>
-                    
-                        <span>Log In / Sign Up with Facebook</span>
+                <button onClick={this.handleClick} className={this.props.classList}>
 
-                        <div className="click-sonar" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div>
-                    
-                    </button>
-            
-                );
+                    <span className="sign-in-btn-text">Log In / Sign Up with Facebook</span>
 
-            }
-            
-            else {
+                </button>
 
-                return (
+            );
 
-                    <button onClick={this.handleClick} className={this.props.classList}>
+        }
 
-                        <span>Log In / Sign Up with Facebook</span>
+        if (this.state.clickSonar.x && !this.state.oAuthLink.clicked) {
 
-                    </button>
+            console.log('RERENDERING WITH SONAR DIV');
 
-                );
+            return (
 
-            }
+                <button onClick={this.handleClick} className={this.props.classList}>
+                
+                    <span className="sign-in-btn-text">Log In / Sign Up with Facebook</span>
 
+                    <div className="click-sonar" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div>
+                
+                </button>
+        
+            );
+
+        }
+
+        if (this.state.oAuthLink.clicked) {
+
+            console.log('RERENDERING WITH LOADER');
+
+            return (
+
+                <span className="spinner-border spinner-border-md" role="status" aria-hidden="true"></span>
+                
+            );
+
+        }
+    
     }
 
 }

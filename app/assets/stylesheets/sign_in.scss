@@ -10,13 +10,19 @@
         justify-content: center;
         align-items: center;
         .row  {
+            min-height: 40%;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             .jumbotron {
+                height: 100%;
                 margin-bottom: 4rem;
                 background-color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
                 .sign-in-btn-landing {
                     background-color: rgba(white, 1);
                     //border-color: black;
@@ -44,7 +50,7 @@
                     background: black;
                     width: 100%;
                 } 
-                span::before, span::after{
+                .sign-in-btn-text::before, .sign-in-btn-text::after{
                     content:"";
                     width:2px;
                     height:0;
@@ -56,13 +62,13 @@
                 .sign-in-btn-landing:hover::before, .sign-in-btn-landing:hover::after{
                     width: 0%;
                 }
-                .sign-in-btn-landing:hover span::before, .sign-in-btn-landing:hover span::after{
+                .sign-in-btn-landing:hover .sign-in-btn-text::before, .sign-in-btn-landing:hover .sign-in-btn-text::after{
                     height: 0%;
                 }
                 .sign-in-btn-landing::before, .sign-in-btn-landing::after{
                     transition-delay: 0s;
                 }
-                .sign-in-btn-landing span::before, .sign-in-btn-landing span::after{
+                .sign-in-btn-landing .sign-in-btn-text::before, .sign-in-btn-landing .sign-in-btn-text::after{
                     transition-delay: 0.2s;
                 }
                 .sign-in-btn-landing::before{
@@ -73,18 +79,18 @@
                     left: 0;
                     bottom: 0;
                 }
-                .sign-in-btn-landing span::before{
+                .sign-in-btn-landing .sign-in-btn-text::before{
                     left: 0;
                     top: 0;
                 }
-                .sign-in-btn-landing span::after{
+                .sign-in-btn-landing .sign-in-btn-text::after{
                     right: 0;
                     bottom: 0;
                 }
                 .sign-in-btn-landing:hover::before, .sign-in-btn-landing:hover::after{
                     transition-delay: 0.2s;
                 }
-                .sign-in-btn-landing:hover span::before, .sign-in-btn-landing:hover span::after{
+                .sign-in-btn-landing:hover .sign-in-btn-text::before, .sign-in-btn-landing:hover .sign-in-btn-text::after{
                     transition-delay: 0s;
                 }
             }
