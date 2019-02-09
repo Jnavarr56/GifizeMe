@@ -1,24 +1,74 @@
 import React from 'react'
 
-const SignInButton = props => {
+class SignInButton extends React.Component {
 
-    if (props.withBadge) {
+    constructor(props) {
+        super(props);
+        this.state = {
+            clickSonar: { x: null, y: null },
+            oAuthLink: '/users/auth/facebook'
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
 
-        return (
+    componentDidUpdate() {
+        
+        
+        if (this.state.clickSonar.x) {
 
-            <a className={props.classList} href="/users/auth/facebook">Log In / Sign Up with <span className={props.badgeClassList}><i className="fab fa-facebook-f"></i></span></a>
+            setTimeout(() => {
+            
+                this.setState({clickSonar: { x: null, y: null }});
+            
+            }, 500);
     
-        );
+        }
 
     }
 
-    else {
+    handleClick(e) {
 
-        return (
+        const rect = e.currentTarget.getBoundingClientRect();
 
-            <a className={props.classList} href="/users/auth/facebook">Log In / Sign Up with Facebook</a>
-    
-        );
+        const newClickSonarCoords = {...this.state};
+        newClickSonarCoords.clickSonar.x = `${((e.clientX - rect.left) / e.currentTarget.offsetWidth) * 100}%`;
+        newClickSonarCoords.clickSonar.y = `${((e.clientY - rect.top) / e.currentTarget.offsetHeight) * 100}%`;
+
+        this.setState(newClickSonarCoords);
+         
+    }
+
+    render() {
+
+            if (this.state.clickSonar.x) {
+
+                return (
+
+                    <button onClick={this.handleClick} className={this.props.classList}>
+                    
+                        Log In / Sign Up with Facebook
+
+                        <div className="click-sonar" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div>
+                    
+                    </button>
+            
+                );
+
+            }
+            
+            else {
+
+                return (
+
+                    <button onClick={this.handleClick} className={this.props.classList}>
+
+                        Log In / Sign Up with Facebook
+
+                    </button>
+
+                );
+
+            }
 
     }
 

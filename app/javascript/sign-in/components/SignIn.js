@@ -13,12 +13,13 @@ class SignIn extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="jumbotron">
-                            <SignInButton withBadge={false} classList={'btn btn-info'} />
+                            <h1 className="display-4">Welcome to GifizeMe.</h1>
+                            <SignInButton withBadge={false} classList={'btn sign-in-btn-landing'} />
                         </div>
                     </div>
                 </div>
             </React.Fragment>
-        
+            
         );
 
     }

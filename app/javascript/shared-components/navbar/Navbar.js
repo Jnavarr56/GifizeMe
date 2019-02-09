@@ -32,7 +32,9 @@ class Navbar extends React.Component {
     }
 
     render () {
+
         return (
+
             <nav className="navbar navbar-expand-lg navbar-light nav-color">
                 <Link className="navbar-brand" to="/">GifizeMe</Link>
                 <button className="navbar-toggler" 
@@ -54,7 +56,9 @@ class Navbar extends React.Component {
                 </div>
             </nav>
         );
+
     }
+    
 }
 
 export default Navbar;

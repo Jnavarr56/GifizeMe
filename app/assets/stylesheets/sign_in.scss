@@ -1,3 +1,47 @@
 // Place all the styles related to the SignIn controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.sign_in.sign_in {
+    overflow: hidden;
+    .container-fluid {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .row  {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .jumbotron {
+                margin-bottom: 4rem;
+                background-color: white;
+            }
+        }
+    }
+    .sign-in-btn-landing {
+        //background-color: rgba(0, 239, 129, 1);
+        border-color: black;
+        border-radius: 0;
+        border-width: 1.5px;
+        padding: 1.25rem;
+        color: rgba(black, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .click-sonar {
+        height: 0;
+        width: 0;
+        opacity: .75;
+        border-radius: 100%;
+        position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+        animation: ClickSonar .5s linear 0s 1;
+        background:  #00ef81;//linear-gradient(to left, #89fffd, #ef32d9);
+    }
+}
+
+@keyframes ClickSonar {
+    100% { height: calc(263.516px * 2); width: calc(263.516px * 2); opacity: 0; }
+}

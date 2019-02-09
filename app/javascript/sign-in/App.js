@@ -10,16 +10,18 @@ indicate whether or not we should have a log out button.
 */
 
 class App extends React.Component {
+
     render () {
         return (
-            <div>
-                <Switch>
-                    <Route exact path="/" render={() => <SignIn {...this.props} sessionStatus={false}/>} />
-                    <Route exact path="/about" render={() => <About {...this.props} sessionStatus={false} />} />
-                </Switch>
-            </div>
+
+            <Switch>
+                <Route exact path="/" render={() => <SignIn {...this.props} sessionStatus={false}/>} />
+                <Route exact path="/about" render={() => <About {...this.props} sessionStatus={false} />} />
+            </Switch>
+            
         );
     }
+    
 }
 
 export default App;

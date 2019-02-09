@@ -7,27 +7,21 @@ body {
     background: linear-gradient(to left, #89fffd, #ef32d9);
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
     #app {
         height: 100%;
         width: 100%;
+        /*
         div:first-child {
             height: 100%;
             width: 100%;
         }
+        */
     }
 }
 * {
     font-family: 'Questrial';
 }
-.sign_in.sign_in {
-    .container-fluid {
-        height: 100%;
-        width: {
 
-        }
-    }
-}
 
 @import "navbar";
 @import "sign_in";
