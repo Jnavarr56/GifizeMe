@@ -16,9 +16,15 @@ class SignInButton extends React.Component {
         //    call a method from out parent component we recieved via props
         //    that will rerender the parent component with a loading animation and 
         //    initiate the oAuth redirect, passing to it the oAuth path¸
-        console.log('WAITING .5s THEN CALLING PARENT COMPONENT METHOD TO RENDER LOADER AND REDIRECT');
 
-        setTimeout(() => this.props.redirectMethod(), 500);
+        if (this.state.clickSonar.x) {
+
+            console.log('WAITING .5s THEN CALLING PARENT COMPONENT METHOD TO RENDER LOADER AND REDIRECT');
+
+            setTimeout(() => this.props.redirectMethod(), 500);
+
+        }
+
 
     }
 
@@ -43,6 +49,8 @@ class SignInButton extends React.Component {
     }
 
     render() {
+
+        console.log('SIGN IN BUTTON');
 
         // 1) this.state.clickSonar.x will be falsey on the initial render so just
         //    render a normal button.

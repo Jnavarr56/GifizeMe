@@ -18,7 +18,7 @@
             position: relative;
             bottom: 5%;
             .jumbotron {
-                height: 100%;
+                height: auto;
                 width: 575.5px;
                 margin-bottom: 0;
                 background-color: white;
@@ -117,10 +117,12 @@
     opacity: 0;
 }
 .jumbotron-header-wrapper {
+    height: 100%;
     width: 100%;
     overflow: hidden;
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     h1 {
@@ -129,9 +131,7 @@
         font-size: 275%;
         justify-self: flex-start;
     }
-    span {
-     
-    }
+
 }
 
 @keyframes RollIn {
@@ -155,4 +155,7 @@
         filter: blur(25px);
         top: 300%;
     }
+}
+.sign-in-jumbotron-list {
+    font-size: 150%;
 }

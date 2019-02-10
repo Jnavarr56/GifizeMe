@@ -1,7 +1,7 @@
 export const particleConfig = {
     "particles": {
       "number": {
-        "value": 80,
+        "value": 40,
         "density": {
           "enable": true,
           "value_area": 800
@@ -106,5 +106,5 @@ export const particleConfig = {
         }
       }
     },
-    "retina_detect": false
+    "retina_detect": true
   };
