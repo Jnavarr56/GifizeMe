@@ -6,8 +6,8 @@ class About extends React.Component {
         return (
             <React.Fragment>
                 <Navbar signedIn={this.props.sessionStatus} route={this.props.location.pathname}/>
-                <h1>Stuff</h1>
-                <ul>
+                <h1 className="fade-in">Stuff</h1>
+                <ul className="fade-in">
                     <li>Thing 1</li>
                     <li>Thing 2</li>
                     <li>Thing 3</li>

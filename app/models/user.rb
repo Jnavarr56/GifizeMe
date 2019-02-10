@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
+  has_many :gifs, dependent: :destroy
+  has_many :app_emojis, through: :gifs
+
+
   # Method is called when user attempts to sign in via OAuth.
   # Locates user by email if exists. If does not, then creates
   # account for user skipping email confirmation.

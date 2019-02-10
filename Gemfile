@@ -72,4 +72,7 @@ gem 'omniauth-facebook'
 
 # Active Storage with AWS
 gem "aws-sdk-s3", require: false
+
+# Emojis
+gem 'gemoji'
 ####################################

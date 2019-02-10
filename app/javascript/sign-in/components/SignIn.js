@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from 'shared-components/navbar/Navbar'
 import SignInJumbotron from './SignInJumbotron'
 import Particles from 'react-particles-js';
-import { particleConfig1, particleConfig2  } from 'extra-data/particle-config'
+import { particleConfig1 } from 'extra-data/particle-config'
 
 
 

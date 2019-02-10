@@ -8,9 +8,9 @@ class Navbar extends React.Component {
         super(props);    
         this.state = {
             navItems: {
-                0: { text: 'Home', alternateText: 'Dashboard', link: '/' },
-                1: { text: 'About / FAQ', alternateText: 'About / FAQ', link: '/about' },
-                2: { text: 'Technology', alternateText: 'About / FAQ', link: 'https://github.com/Jnavarr56/GifizeMe' },
+                0: { text: 'Home', alternateText: 'Dashboard', link: '/', internal: true},
+                1: { text: 'About / FAQ', alternateText: 'About / FAQ', link: '/about', internal: true},
+                2: { text: 'Technology', alternateText: 'Technology', link: 'https://github.com/Jnavarr56/GifizeMe', internal: false}
             }
         };
     }
@@ -50,6 +50,7 @@ class Navbar extends React.Component {
                     <ul className="navbar-nav mr-auto">
                         {Object.keys(this.state.navItems).map(x => <NavItem key={`NI${x}`} useAltText={this.props.signedIn} linkPath={this.props.linkPath} itemInfo={this.state.navItems[x]} />)}
                     </ul>
+                    
                     <span className="navbar-text nav-link-animated">
                         {this.getLogLink(this.props.signedIn)}
                     </span>

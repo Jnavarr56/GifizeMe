@@ -112,10 +112,10 @@ export const particleConfig1 = {
 export const particleConfig2 = {
   "particles": {
     "number": {
-      "value": 180,
+      "value": 350,
       "density": {
         "enable": true,
-        "value_area": 1000
+        "value_area": 800
       }
     },
     "color": {
@@ -147,12 +147,12 @@ export const particleConfig2 = {
       }
     },
     "size": {
-      "value": 5.06824121731046,
+      "value": 8.06824121731046,
       "random": true,
       "anim": {
-        "enable": false,
+        "enable": true,
         "speed": 1,
-        "size_min": 5,
+        "size_min": 1,
         "sync": false
       }
     },
@@ -165,7 +165,7 @@ export const particleConfig2 = {
     },
     "move": {
       "enable": true,
-      "speed": 30,
+      "speed": 1,
       "direction": "top",
       "random": false,
       "straight": true,

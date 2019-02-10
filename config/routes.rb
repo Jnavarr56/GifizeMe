@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     
   }
 
-
-
   devise_scope :user do
     
     unauthenticated do
@@ -26,9 +24,14 @@ Rails.application.routes.draw do
     authenticated do
       root :to => "logged_in#logged_in"
 
-      get "*path" => "logged_in#logged_in"
+      get "/about" => "logged_in#logged_in"
+
+      get "/acquire-user-data/:id" => "logged_in#acquire_user_data"
+      
     end
     
   end
+
+
 
 end

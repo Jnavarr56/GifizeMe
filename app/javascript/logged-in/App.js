@@ -4,17 +4,23 @@ import Dashboard from './components/Dashboard'
 import About from '../shared-components/About'
 
 class App extends React.Component {
+
     render () {
+
         return (
-            <div>
-                <Switch>
-                    <Route exact path="/" component={Dashboard} />
-                    <Route exact path="/about" component={About} />
-                </Switch>
-            </div>
+
+            <Switch>
+                <Route exact path="/" render={() => <Dashboard {...this.props} sessionStatus={true}/>} />
+                <Route exact path="/about" component={About} />
+            </Switch>
+
         );
+
     }
+
 }
 
 export default App;
+
+
 

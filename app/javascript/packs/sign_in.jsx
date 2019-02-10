@@ -14,4 +14,4 @@ document.addEventListener('DOMContentLoaded', () => {
     </Router>,
     document.getElementById('app'),
   )
-})
+});

@@ -1,3 +1,164 @@
 // Place all the styles related to the LoggedIn controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the SignIn controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.logged_in.logged_in { 
+    overflow: hidden;
+    .container-fluid {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .row  {
+            height: 80%;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position: relative;
+            bottom: 5%;
+            .column {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                position: relative;
+            }
+            .spinner-container {
+                position: relative;
+                bottom: 5%;
+            }
+        }
+    }
+}
+.spinner-fade-getting-gifs {
+    height: 200px;
+    width: 200px;
+    position: relative;
+
+}
+.sideNav {
+    * {
+        color: #00ef81;
+    }
+    height: 100%;
+    
+    background-color: transparent;
+
+    .card-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-color: white;
+        border-radius: 5px 5px 0 0;
+        background-color: rgba(white, 1);
+    }
+    .card-title {
+        margin: 0;
+    }
+    
+    .list-group {
+        height: 100%;
+        border-radius: 0 0 5px 5px;
+        background-color: rgba(white, 1);
+        .list-group-item {
+            background-color: rgba(white, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 33%;
+            font-size: 150%;
+            overflow: hidden;
+            padding: 0 !important;
+            margin: 0;
+            border-radius: 0;
+            color: rgba(black, 1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            font-size: 24px;
+            color: rgb(231, 76, 60);
+            display: block;
+            transition: all 0.4s !important;
+            box-sizing: border-box;
+            text-align: center;
+            text-decoration: none;
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: all 0.4s !important;
+            }
+        }
+    }
+    .list-group-item:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        color: white;
+        display: block;
+        transition: all 0.4s !important;
+        box-sizing: border-box;
+        text-align: center;
+        text-decoration: none;
+        border-width: 3px ;
+        border-style: none solid none solid;
+        border-color: rgba(#00ef81, 0);
+
+    }
+    .list-group-item:hover{  
+        transition: all 0.4s !important;
+        box-sizing: border-box;
+        cursor: pointer;
+        span { color: white !important; }
+    }
+    .list-group-item:hover:after {  
+        transition: all 0.4s !important;
+        box-sizing: border-box;
+        cursor: pointer;
+        color: rgb(231, 76, 60);
+        border-left: 130px solid rgba(#00ef81, 1);
+        border-right: 130px solid rgba(#00ef81, 1);
+    }
+}
+
+.click-sonar2 {
+    height: 0;
+    width: 0;
+    opacity: .75;
+    border-radius: 100%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    animation: ClickSonar2 .5s ease-out 0s 1;
+    background:  white;//linear-gradient(to left, #89fffd, #ef32d9);
+}
+@keyframes ClickSonar2 {
+100% { height: calc(263.516px * 2); width: calc(263.516px * 2); opacity: 0; }
+}
+
+
+
+.selected-dash-component {  
+    transition: all 0.4s !important;
+    box-sizing: border-box;
+    cursor: pointer;
+    span { color: white !important; }
+}
+.selected-dash-component:after {  
+    transition: all 0.4s !important;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-left: 130px solid rgba(#00ef81, 1) !important;
+    border-right: 130px solid rgba(#00ef81, 1) !important;
+}
+
+.no-gifs {
+    background-color: #00ef81;
+    color:white; 
+}

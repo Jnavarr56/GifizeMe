@@ -43,6 +43,7 @@ body {
     opacity: 0;
     filter: blur(5px);
     animation: SpinnerFade 3s ease 0s 1 forwards;
+    
     span {
         height: 200px;
         width: 200px;
@@ -78,6 +79,18 @@ body {
 @keyframes SizeFadeOut {
     100% { opacity: 0;  filter: blur(5px); transform: scale(.75);}
 }
+.be-out {
+    opacity: 0;
+}
+.fade-in-fast {
+    opacity: 0;
+    filter: blur(5px);
+    animation: FadeInFast 1s ease 0s 1 forwards;
+}
+@keyframes FadeInFast {
+    100% { opacity: 1;  filter: blur(0px);}
+}
+
 @import "navbar";
 @import "sign_in";
-
+@import "logged_in";
