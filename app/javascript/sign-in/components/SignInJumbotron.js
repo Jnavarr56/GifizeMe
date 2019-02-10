@@ -1,6 +1,6 @@
 import React from 'react'
 import SignInButton from 'shared-components/session-buttons/SignInButton'
-
+import JumbotronHeader from './JumbotronHeader'
 
 class SignInJumbotron extends React.Component {
 
@@ -56,16 +56,12 @@ class SignInJumbotron extends React.Component {
             return ( 
 
                 <div className={`jumbotron ${this.state.transitioning ? 'fade-out' : 'fade-in'}`}>
-                    <h1 className="display-4">Welcome to GifizeMe.</h1>
-                    <p className="">
-                        Take videos of yourself and have them converted to gifs.
-                        <br />
-                        <br />
-                        Do something else.
-                        <br />
-                        <br />
-                        Send them to friends via FB messenger.
-                    </p>
+                    <JumbotronHeader />
+                    <ul>
+                        <li>Make gifs of yourself.</li>
+                        <li>Map them to your favorite emojis.</li>
+                        <li>Send to friends via FB messanger.</li>
+                    </ul>
                     <SignInButton 
                         redirectMethod={this.switchToTransition} 
                         classList={'btn sign-in-btn-landing'} 

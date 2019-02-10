@@ -52,8 +52,14 @@ body {
 @keyframes SpinnerFade {
     50% { opacity: 1;  filter: blur(0px);}
 }
-
-
-
+.particles {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
 @import "navbar";
 @import "sign_in";
+
