@@ -55,7 +55,7 @@ class GifIndex extends React.Component {
 
         else {
 
-            return (this.props.masterState.user_gifs.gifs.map((x, i) => <img onClick={() => this.props.sendDialog(x.blobURL)} key={`G${i}`} src={x.blobURL} />))
+            return (this.props.masterState.user_gifs.gifs.map((x, i) => <img className="fade-in" onClick={() => this.props.sendDialog(x.blobURL)} key={`G${i}`} src={x.blobURL} />))
 
         }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import gifshot from 'gifshot'
-import * as b64toBlob from 'b64-to-blob'
+import DurationSelect from './DurationSelect'
 import axios from 'axios'
 
-class GifIndex extends React.Component {
+class GifCreate extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,35 +11,34 @@ class GifIndex extends React.Component {
             selectedEmojiID: null,
             selectedEmoji: null,
             videoStarted: false,
-            videoDuration: false,
+            videoDuration: 100
         }
         this.selectEmoji = this.selectEmoji.bind(this);
         this.testCapture = this.testCapture.bind(this);
+        this.dataURItoBlob = this.dataURItoBlob.bind(this);
         this.handleStartRecord = this.handleStartRecord.bind(this);
         this.handleServerTest = this.handleServerTest.bind(this);
         this.handleDurationChange = this.handleDurationChange.bind(this);
     }
 
-    dataURItoBlob = dataURI => {
+    dataURItoBlob(dataURI) {
         // convert base64 to raw binary data held in a string
-        var byteString = atob(dataURI.split(',')[1]);
+        let byteString = atob(dataURI.split(',')[1]);
     
         // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     
         // write the bytes of the string to an ArrayBuffer
-        var arrayBuffer = new ArrayBuffer(byteString.length);
-        var _ia = new Uint8Array(arrayBuffer);
+        let arrayBuffer = new ArrayBuffer(byteString.length);
+        let _ia = new Uint8Array(arrayBuffer);
         for (var i = 0; i < byteString.length; i++) {
             _ia[i] = byteString.charCodeAt(i);
         }
     
-        var dataView = new DataView(arrayBuffer);
-        var blob = new Blob([dataView], { type: mimeString });
+        let dataView = new DataView(arrayBuffer);
+        let blob = new Blob([dataView], { type: mimeString });
         return blob;
     };
-
-
 
 
     componentDidMount() {
@@ -56,8 +55,6 @@ class GifIndex extends React.Component {
             this.testCapture();
         }
 
-
-
         if (this.state.imgCap) {
             
 
@@ -69,10 +66,12 @@ class GifIndex extends React.Component {
 
         const me = this;
 
+        console.log(this.state.videoDuration * 10);
+
         gifshot.createGIF(
             {
                 webcamVideoElement: document.getElementById('thing'),
-                'numFrames': 100,
+                'numFrames': this.state.videoDuration * 10,
                 'interval': .05
 
             },
@@ -153,11 +152,14 @@ class GifIndex extends React.Component {
 
     }
 
-    handleDurationChange(i) {
+    handleDurationChange(e) {
 
-        console.log(i);
+        
+        const stateCopy = {...this.state};
+        stateCopy.videoDuration = parseInt(e.currentTarget.value);
 
-        console.log(i.currentTarget);
+        this.setState(stateCopy);
+        
 
     }
 
@@ -178,7 +180,7 @@ class GifIndex extends React.Component {
                     <div className="emojiSelectWindow">
                         <p className="text-center">{this.state.selectedEmoji ? `${this.state.selectedEmoji} ${this.state.selectedEmojiName}`  :'First, select an emoji below!'}</p>
                         {!this.state.selectedEmoji  ?  ''  : ( !this.state.imgCap ? <button className="btn btn-info" onClick={this.handleStartRecord}>Click to Start Recording</button> : <button className="btn btn-warning" onClick={this.handleServerTest}>Save</button>)}
-                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.imgCap ? <input max={15} min={1} onChange={this.handleDurationChange} type={'number'} placeholder={'Duration Here (max 15s, default of 10s)'} /> : '' )}
+                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.imgCap ? <DurationSelect changingVideoDuration={this.handleDurationChange} /> : '' )}
                     </div>
                 </div>
                 <div className="fade-in card-group available-emojis">
@@ -193,6 +195,6 @@ class GifIndex extends React.Component {
     
 }
 
-export default GifIndex;
+export default GifCreate;
 
 
