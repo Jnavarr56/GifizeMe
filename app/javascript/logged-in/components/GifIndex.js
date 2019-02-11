@@ -42,7 +42,7 @@ class GifIndex extends React.Component {
     
     render () {
 
-        if (!this.props.masterState.user_gifs) {
+        if (!this.props.masterState.user_gifs.gifs) {
 
             return (
 
@@ -55,7 +55,7 @@ class GifIndex extends React.Component {
 
         else {
 
-            
+            return (this.props.masterState.user_gifs.gifs.map((x, i) => <img onClick={() => this.props.sendDialog(x.blobURL)} key={`G${i}`} src={x.blobURL} />))
 
         }
 

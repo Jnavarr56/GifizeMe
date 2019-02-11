@@ -52,5 +52,19 @@ class User < ApplicationRecord
 
   end
 
+  def self.get_available_emojis
+
+    if !self.gifs.exists?
+
+      return App_Emojis.all
+
+    else
+
+      
+
+    end
+        
+  end
+
   
 end

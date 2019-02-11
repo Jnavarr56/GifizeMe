@@ -43,7 +43,7 @@ class DashContainer extends React.Component {
 
         if (i === 0) {
 
-            return <GifIndex findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
+            return <GifIndex sendDialog={this.props.sendDialog}findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
 
         }
 
@@ -77,7 +77,7 @@ class DashContainer extends React.Component {
         return (
 
             <React.Fragment>
-                <div className="column col-4 col-md-3 col-xl-2">
+                <div className="column col-4 col-md-2 col-xl-1">
                     <SideNav updateDash={this.updateDashLocation} currentComponent={this.state.componentIndex} masterState={this.props.masterState}/>
                 </div>
                 <div className="column col-7">

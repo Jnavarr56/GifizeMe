@@ -55,10 +55,11 @@
         align-items: center;
         border-color: white;
         border-radius: 5px 5px 0 0;
-        background-color: rgba(white, 1);
+        background-color: rgba(#00ef81, 1);
     }
     .card-title {
         margin: 0;
+        color: white !important;
     }
     
     .list-group {
@@ -161,4 +162,113 @@
 .no-gifs {
     background-color: #00ef81;
     color:white; 
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    * {
+        text-align: center;
+    }
+}
+
+.available-emojis {
+    &::-webkit-scrollbar {
+        width: 10px;
+        margin: 0 5px;
+      }
+      
+      /* Track */
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #a8ff78, .6; 
+        border-radius: 10px;
+      }
+      
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: white; 
+        border-radius: 20px;
+      }
+
+    height: 35%;
+    width: 100%;
+    overflow-y: scroll;
+    //background-color: rgba(#00ef81, .25);
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    background-size: 400% 400%;
+    background: linear-gradient(to right, rgba(#78ffd6, .6), rgba(#a8ff78, .6));  
+    //animation: Gradient 2.5s ease infinite;
+    div {
+        height: 50%;
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        &:hover {
+            background-color: rgba(white, .3);
+        }
+        h5 {
+            font-size: 200%;
+        }
+        
+    }
+	
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.capture-group {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-size: 400% 400%;
+    background: linear-gradient(to right, rgba(#78ffd6, .6), rgba(#a8ff78, .6));  
+    //animation: Gradient 2.5s ease infinite;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    .video, .emojiSelectWindow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 50%;
+        p, i {
+            color: black;
+            font-size: 200%;
+        }
+    }
+    .emojiSelectWindow {
+        width: 35%;
+        .btn {
+            width: 100%;
+        }
+    }
+    .capture-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 15%;
+    }
+    input {
+        width: 100%;
+    }
+}
+.selected-emoji-table {
+    background-color: rgba(white, .6) !important;
 }

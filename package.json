@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
+    "b64-to-blob": "^1.2.19",
     "babel-preset-react": "^6.24.1",
     "gifshot": "^0.4.5",
     "prop-types": "^15.6.2",

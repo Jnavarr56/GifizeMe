@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       get "/about" => "logged_in#logged_in"
 
       get "/acquire-user-data/:id" => "logged_in#acquire_user_data"
+
+      post "/upload" => "logged_in#upload"
       
     end
     

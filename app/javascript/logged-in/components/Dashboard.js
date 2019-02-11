@@ -3,7 +3,6 @@ import Navbar from 'shared-components/navbar/Navbar'
 import DashContainer from './DashContainer'
 import Particles from 'react-particles-js';
 import { particleConfig2  } from 'extra-data/particle-config'
-import gifshot from 'gifshot'
 import axios from 'axios'
 
 
@@ -13,33 +12,12 @@ class Dashboard extends React.Component {
         
         super(props);
         this.state = {}
-        this.testCapture = this.testCapture.bind(this);
-    }
 
-    testCapture() {
-        const me = this;
-        gifshot.createGIF(
-            {
-                webcamVideoElement: document.getElementById('thing'),
-                'numFrames': 10,
-
-            },
-            function(obj) {
-
-                console.log(obj)
-
-                if(!obj.error) {              
-                    const stateCopy = {...me.state};
-                    stateCopy.src = obj.image
-                    me.setState(stateCopy)
-
-                    
-                }
-
-            }
-        );
+        this.sendDialog = this.sendDialog.bind(this);
 
     }
+
+
 
     componentDidMount() {
 
@@ -96,6 +74,13 @@ class Dashboard extends React.Component {
 
     }
 
+    sendDialog(url) {
+        FB.ui({
+            method: 'send',
+            link: url,
+        });
+    }
+
 
     render () {
 
@@ -109,7 +94,7 @@ class Dashboard extends React.Component {
                     <Particles className={`particles ${Object.keys(this.state).length ? 'fade-in-fast' : 'be-out'}`} params={ particleConfig2 } />
                     <div className="container-fluid">
                         <div className="row"> 
-                            { !Object.keys(this.state).length ? <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div> : <DashContainer masterState={this.state}/> } 
+                            { !Object.keys(this.state).length ? <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div> : <DashContainer sendDialog={this.sendDialog}masterState={this.state}/> } 
                         </div>
                     </div>
                 </React.Fragment>
