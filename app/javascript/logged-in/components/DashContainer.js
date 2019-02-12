@@ -13,18 +13,19 @@ class DashContainer extends React.Component {
         }
         this.updateDashLocation = this.updateDashLocation.bind(this);
         this.findMakeAGif = this.findMakeAGif.bind(this);
+        this.mayRedirect = false;
     }
 
 
 
     componentDidMount() {
 
- 
+        this.mayRedirect = true;
+        
     }
 
     componentDidUpdate() {
-
- 
+        
     }
 
     updateDashLocation(i) {
@@ -33,7 +34,6 @@ class DashContainer extends React.Component {
 
         stateCopy.componentIndex = i;
         this.setState(stateCopy);
-
 
     }
 
@@ -55,7 +55,7 @@ class DashContainer extends React.Component {
 
         else {
 
-            return <GifCreate findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
+            return <GifCreate afterSaveRedirect={this.updateDashLocation} regainData={this.props.regainData} findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
 
         }
 

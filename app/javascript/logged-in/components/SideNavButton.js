@@ -69,7 +69,7 @@ class SideNavButton extends React.Component {
 
             return (
 
-                <li onClick={this.handleClick} className={`list-group-item ${this.props.currentComponent === this.props.componentIndex ? 'selected-dash-component' : '' }`}>
+                <li id={this.props.becomeId} onClick={this.handleClick} className={`list-group-item ${this.props.currentComponent === this.props.componentIndex ? 'selected-dash-component' : '' }`}>
 
                     <span>{this.props.itemInfo.navText}</span>
     
@@ -88,9 +88,11 @@ class SideNavButton extends React.Component {
 
             console.log('RERENDERING WITH SONAR DIV');
 
+            console.log(this.props)
+
             return (
 
-                <li className='list-group-item'>
+                <li id={this.props.becomeId} className='list-group-item'>
             
                     <span>{this.props.itemInfo.navText}</span>
 

@@ -148,7 +148,21 @@ class GifCreate extends React.Component {
         { headers: { 'Content-Type' : 'multipart/form-data;'} }
         ).then(function (response) {
 
-            console.log(response);
+            if (response.data.status === "SUCCESS") {
+
+                obj.props.regainData(true);
+
+
+                obj.props.afterSaveRedirect(0);
+
+
+            }
+
+            else {
+
+                alert('Sorry, there was an error :(. Try again later');
+
+            }
 
 
         })
@@ -191,9 +205,6 @@ class GifCreate extends React.Component {
         });
 
     }
-
-
-
 
     render () {
 

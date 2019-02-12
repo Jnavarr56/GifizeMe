@@ -14,12 +14,11 @@ class Dashboard extends React.Component {
         this.state = {}
 
         this.sendDialog = this.sendDialog.bind(this);
+        this.performDataFetch = this.performDataFetch.bind(this);
 
     }
 
-
-
-    componentDidMount() {
+    performDataFetch(redirect) {
 
         const dash = this;
 
@@ -49,7 +48,6 @@ class Dashboard extends React.Component {
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
 
-
                 setTimeout(() => dash.setState(response.data), 1000);
 
             })
@@ -58,6 +56,14 @@ class Dashboard extends React.Component {
                 console.log(error);
 
             });
+
+    }
+
+
+
+    componentDidMount() {
+
+        this.performDataFetch();
  
     }
 
@@ -69,6 +75,8 @@ class Dashboard extends React.Component {
             stateCopy.stillAcq = true;
             stateCopy.user_gifs.gifs = stateCopy.user_gifs.gifs.sort((a, b) => b.gif_record.id - a.gif_record.id);
 
+
+
             setTimeout(() => this.setState(stateCopy), 50);
 
         }
@@ -76,16 +84,18 @@ class Dashboard extends React.Component {
     }
 
     sendDialog(url) {
+
         FB.ui({
             method: 'send',
             link: url,
         });
+
     }
 
 
     render () {
 
-
+        
 
 
             return (
@@ -95,7 +105,7 @@ class Dashboard extends React.Component {
                     <Particles className={`particles ${Object.keys(this.state).length ? 'fade-in-fast' : 'be-out'}`} params={ particleConfig2 } />
                     <div className="container-fluid">
                         <div className="row"> 
-                            { !Object.keys(this.state).length ? <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div> : <DashContainer sendDialog={this.sendDialog}masterState={this.state}/> } 
+                            { !Object.keys(this.state).length ? <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div> : <DashContainer shouldRedirect={this.state.shouldRedirect ? true : false} regainData={this.performDataFetch} sendDialog={this.sendDialog} masterState={this.state}/> } 
                         </div>
                     </div>
                 </React.Fragment>

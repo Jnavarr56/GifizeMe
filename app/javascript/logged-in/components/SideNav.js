@@ -36,7 +36,7 @@ class SideNav extends React.Component {
                     <h5 className="card-title">{`Welcome ${this.props.masterState.user_data.first_name}!`}</h5>
                 </div>
                 <ul className="list-group list-group-flush">
-                    {Object.keys(this.state).map((x, i) => <SideNavButton key={`SNB${x}`} currentComponent={this.props.currentComponent} updateDash={this.props.updateDash} componentIndex={i} itemInfo={this.state[x]}/> )}
+                    {Object.keys(this.state).map((x, i) => <SideNavButton becomeId={`cl${i}`} key={`SNB${x}`} currentComponent={this.props.currentComponent} updateDash={this.props.updateDash} componentIndex={i} itemInfo={this.state[x]}/> )}
                 </ul>
             </div>
             
