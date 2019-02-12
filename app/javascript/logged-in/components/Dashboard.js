@@ -67,6 +67,7 @@ class Dashboard extends React.Component {
 
             const stateCopy = {...this.state};
             stateCopy.stillAcq = true;
+            stateCopy.user_gifs.gifs = stateCopy.user_gifs.gifs.sort((a, b) => b.gif_record.id - a.gif_record.id);
 
             setTimeout(() => this.setState(stateCopy), 50);
 

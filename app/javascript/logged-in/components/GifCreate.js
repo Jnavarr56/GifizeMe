@@ -1,6 +1,7 @@
 import React from 'react'
 import gifshot from 'gifshot'
 import DurationSelect from './DurationSelect'
+import Timer from './Timer'
 import axios from 'axios'
 
 class GifCreate extends React.Component {
@@ -11,7 +12,7 @@ class GifCreate extends React.Component {
             selectedEmojiID: null,
             selectedEmoji: null,
             videoStarted: false,
-            videoDuration: 100
+            videoDuration: 1
         }
         this.selectEmoji = this.selectEmoji.bind(this);
         this.testCapture = this.testCapture.bind(this);
@@ -19,6 +20,8 @@ class GifCreate extends React.Component {
         this.handleStartRecord = this.handleStartRecord.bind(this);
         this.handleServerTest = this.handleServerTest.bind(this);
         this.handleDurationChange = this.handleDurationChange.bind(this);
+        this.tryAgain = this.tryAgain.bind(this);
+        this.nevermind = this.nevermind.bind(this);
     }
 
     dataURItoBlob(dataURI) {
@@ -144,10 +147,17 @@ class GifCreate extends React.Component {
         ,
         { headers: { 'Content-Type' : 'multipart/form-data;'} }
         ).then(function (response) {
+
             console.log(response);
+
+
         })
         .catch(function (error) {
+
             console.log(error);
+
+            alert('Sorry, there was an error :(. Try again later');
+
         });
 
     }
@@ -160,6 +170,25 @@ class GifCreate extends React.Component {
 
         this.setState(stateCopy);
         
+
+    }
+
+    tryAgain() {
+        const stateCopy = {...this.state};
+        stateCopy.imgCap = null;
+        stateCopy.videoStarted = false;
+
+        this.setState(stateCopy);
+    }
+
+    nevermind() {
+  
+        this.setState({
+            selectedEmojiID: null,
+            selectedEmoji: null,
+            videoStarted: false,
+            videoDuration: 1
+        });
 
     }
 
@@ -179,8 +208,10 @@ class GifCreate extends React.Component {
                     </div>
                     <div className="emojiSelectWindow">
                         <p className="text-center">{this.state.selectedEmoji ? `${this.state.selectedEmoji} ${this.state.selectedEmojiName}`  :'First, select an emoji below!'}</p>
-                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.imgCap ? <button className="btn btn-info" onClick={this.handleStartRecord}>Click to Start Recording</button> : <button className="btn btn-warning" onClick={this.handleServerTest}>Save</button>)}
-                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.imgCap ? <DurationSelect changingVideoDuration={this.handleDurationChange} /> : '' )}
+                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.videoStarted ? <button className="btn btn-info" onClick={this.handleStartRecord}>Click to Start Recording</button> : (this.state.imgCap ? <button className="btn btn-success" onClick={this.handleServerTest}>Save</button>: ''))}
+                        {this.state.selectedEmoji && this.state.videoStarted && this.state.imgCap ? <button onClick={this.tryAgain} className="btn btn-warning">Try Again</button> : ''} 
+                        {this.state.selectedEmoji && this.state.videoStarted && this.state.imgCap ? <button onClick={this.nevermind} className="btn btn-danger">Nevermind</button> : ''} 
+                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.videoStarted ? <DurationSelect changingVideoDuration={this.handleDurationChange} /> : (!this.state.imgCap ? <p>Recording!</p> : '') )}
                     </div>
                 </div>
                 <div className="fade-in card-group available-emojis">

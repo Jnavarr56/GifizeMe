@@ -1,4 +1,5 @@
 import React from 'react'
+import RenderedGif from './RenderedGif';
 
 class GifIndex extends React.Component {
 
@@ -55,7 +56,9 @@ class GifIndex extends React.Component {
 
         else {
 
-            return (this.props.masterState.user_gifs.gifs.map((x, i) => <img className="fade-in" onClick={() => this.props.sendDialog(x.blobURL)} key={`G${i}`} src={x.blobURL} />))
+            return (<div className="rendered-gifs-container">{this.props.masterState.user_gifs.gifs.map((x, i) => <RenderedGif className="fade-in" style={{animationDelay: `${i * .10}s`}} emoji={x.emoji.code} key={`G${i}`} src={x.blobURL} />)}</div>)
+
+            // onClick={() => this.props.sendDialog(x.blobURL)}
 
         }
 
