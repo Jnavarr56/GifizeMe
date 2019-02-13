@@ -86,10 +86,16 @@ class Dashboard extends React.Component {
 
     sendDialog(url) {
 
+        console.log(url);
+
         FB.ui({
             method: 'send',
             link: url,
-        });
+            redirect_uri: window.location.href,
+            
+        },
+        (response) => { console.log(response); }
+        );
 
     }
 

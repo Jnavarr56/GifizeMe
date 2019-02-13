@@ -32,6 +32,10 @@ class LoggedInController < ApplicationController
 
             puts user_gif.first.created_at
 
+            puts Rails.application.routes.url_helpers.rails_blob_path(user_gif.first.gif_file,  only_path: true)
+            puts Rails.application.routes.url_helpers.rails_blob_path(user_gif.first.gif_file,  only_path: true)
+            puts Rails.application.routes.url_helpers.rails_blob_path(user_gif.first.gif_file, only_path: true)
+
             state['user_gifs']['gifs'].push({ 'gif_record' => user_gif.first, 'emoji' => e, 'blobURL' => user_gif.first.gif_file.service_url })
             
           else

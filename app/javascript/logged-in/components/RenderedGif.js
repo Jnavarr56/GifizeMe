@@ -23,7 +23,7 @@ class RenderedGif extends React.Component {
                     <p className="card-text">
                         {this.props.emoji}
                         <br />
-                        <i className="fab fa-facebook-messenger"></i>
+                        <i onClick={() => this.props.sendDialog(this.props.src)} className="fab fa-facebook-messenger"></i>
                     </p>
                 </div>
             </div>
