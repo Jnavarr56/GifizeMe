@@ -30,11 +30,9 @@ class LoggedInController < ApplicationController
 
           if user_gif.exists?
 
-            puts (Time.zone.now - user_gif.first.created_at)/1000
-            puts (Time.zone.now - user_gif.first.created_at)/1000
-            puts (Time.zone.now - user_gif.first.created_at)/1000
+            puts user_gif.first.created_at
 
-            state['user_gifs']['gifs'].push({ 'gif_record' => user_gif.first, 'emoji' => e, 'blobURL' => user_gif.first.gif_file.service_url  })
+            state['user_gifs']['gifs'].push({ 'gif_record' => user_gif.first, 'emoji' => e, 'blobURL' => user_gif.first.gif_file.service_url })
             
           else
 

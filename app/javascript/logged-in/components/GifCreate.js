@@ -20,6 +20,7 @@ class GifCreate extends React.Component {
         this.handleStartRecord = this.handleStartRecord.bind(this);
         this.handleServerTest = this.handleServerTest.bind(this);
         this.handleDurationChange = this.handleDurationChange.bind(this);
+        this.showLoading = this.showLoading.bind(this);
         this.tryAgain = this.tryAgain.bind(this);
         this.nevermind = this.nevermind.bind(this);
     }
@@ -58,8 +59,13 @@ class GifCreate extends React.Component {
             this.testCapture();
         }
 
-        if (this.state.imgCap) {
+        if (this.state.shouldShowLoading) {
+
+            console.log('WOWOWOWOW');
+
+            document.querySelector('.col-4').classList.add('saving');
             
+            this.handleServerTest();
 
         }
  
@@ -130,6 +136,8 @@ class GifCreate extends React.Component {
 
     handleServerTest() {
 
+        
+
         let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
         axios.defaults.headers.common['X-CSRF-Token'] = token
         axios.defaults.headers.common['Accept'] = 'application/json'
@@ -151,11 +159,8 @@ class GifCreate extends React.Component {
             if (response.data.status === "SUCCESS") {
 
                 obj.props.regainData(true);
-
-
+                
                 obj.props.afterSaveRedirect(0);
-
-
             }
 
             else {
@@ -201,8 +206,22 @@ class GifCreate extends React.Component {
             selectedEmojiID: null,
             selectedEmoji: null,
             videoStarted: false,
-            videoDuration: 1
+            videoDuration: 1,
+            imgCap: null,
+            shouldShowLoading: false
         });
+
+    }
+
+    showLoading() {
+
+        document.querySelector('.col-4').classList.add('saving');
+
+        const stateCopy = {...this.state};
+
+        stateCopy.shouldShowLoading = true;
+
+        this.setState(stateCopy);
 
     }
 
@@ -213,19 +232,20 @@ class GifCreate extends React.Component {
         return (
 
             <React.Fragment>
-                <div className="fade-in capture-group">
+                {this.state.shouldShowLoading  ?  <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div>  : ''}
+                <div className={`fade-in capture-group ${this.state.shouldShowLoading ? 'saving'  : ''}`}> 
                     <div className="video">
                         {this.state.videoStarted ? (this.state.imgCap ? <img src={this.state.imgCap.image} /> : <video id="thing"></video>) : <i className="fas fa-video"></i> }
                     </div>
                     <div className="emojiSelectWindow">
                         <p className="text-center">{this.state.selectedEmoji ? `${this.state.selectedEmoji} ${this.state.selectedEmojiName}`  :'First, select an emoji below!'}</p>
-                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.videoStarted ? <button className="btn btn-info" onClick={this.handleStartRecord}>Click to Start Recording</button> : (this.state.imgCap ? <button className="btn btn-success" onClick={this.handleServerTest}>Save</button>: ''))}
+                        {!this.state.selectedEmoji  ?  ''  : ( !this.state.videoStarted ? <button className="btn btn-info" onClick={this.handleStartRecord}>Click to Start Recording</button> : (this.state.imgCap ? <button className="btn btn-success" onClick={this.showLoading}>Save</button>: ''))}
                         {this.state.selectedEmoji && this.state.videoStarted && this.state.imgCap ? <button onClick={this.tryAgain} className="btn btn-warning">Try Again</button> : ''} 
                         {this.state.selectedEmoji && this.state.videoStarted && this.state.imgCap ? <button onClick={this.nevermind} className="btn btn-danger">Nevermind</button> : ''} 
                         {!this.state.selectedEmoji  ?  ''  : ( !this.state.videoStarted ? <DurationSelect changingVideoDuration={this.handleDurationChange} /> : (!this.state.imgCap ? <p>Recording!</p> : '') )}
                     </div>
                 </div>
-                <div className="fade-in card-group available-emojis">
+                <div className={`fade-in card-group available-emojis ${this.state.shouldShowLoading ? 'saving'  : ''}`}>
                     {this.props.masterState.user_gifs.available_emojis.map(x => <div onClick={() => this.selectEmoji(x.id)} className={x.id === this.state.selectedEmojiID ? 'selected-emoji-table' : '' } key={`${x.id}`}><h5 className="">{x.code}</h5></div>)}
                 </div>
             </React.Fragment>

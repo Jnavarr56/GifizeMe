@@ -25,8 +25,6 @@ class Dashboard extends React.Component {
         axios.get(`/acquire-user-data/${document.getElementById('app').getAttribute('data-tracker').split("==")[1]}`)
             .then(function (response) {
 
-                console.log(response);
-
                 const newState = response.data;
                 newState.stillAcq = false;
 
@@ -47,6 +45,12 @@ class Dashboard extends React.Component {
                     js.src = "https://connect.facebook.net/en_US/sdk.js";
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
+
+                if (response.data.user_gifs.gifs) {
+
+                    response.data.user_gifs.gifs = response.data.user_gifs.gifs.sort((a, b) => b.gif_record.id - a.gif_record.id);
+
+                }
 
                 setTimeout(() => dash.setState(response.data), 1000);
 
@@ -73,9 +77,6 @@ class Dashboard extends React.Component {
 
             const stateCopy = {...this.state};
             stateCopy.stillAcq = true;
-            stateCopy.user_gifs.gifs = stateCopy.user_gifs.gifs.sort((a, b) => b.gif_record.id - a.gif_record.id);
-
-
 
             setTimeout(() => this.setState(stateCopy), 50);
 

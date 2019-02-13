@@ -118,6 +118,7 @@
         box-sizing: border-box;
         cursor: pointer;
         span { color: white !important; }
+
     }
     .list-group-item:hover:after {  
         transition: all 0.4s !important;
@@ -316,8 +317,43 @@
             text-align: center;
             font-size: 200%;
         }
+        .fa-facebook-messenger {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         &:hover {
             background-color: #00ef81;
+            p {
+                .fa-facebook-messenger {
+                    background: initial;
+                    -webkit-background-clip:  initial;
+                    -webkit-text-fill-color: initial;
+                    color: white !important;
+                    cursor: pointer;
+                }
+            }
         }
+    }
+}
+.card-name {
+    font-size: 100%;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 2%;
+}
+.saving {
+    display: none !important;
+}
+.just-created {
+    animation: JustCreated .25s ease 0s 3;
+}
+@keyframes JustCreated {
+    0% {
+        background-color: blue;
+    }
+    100% {
+        background-color: white;
     }
 }

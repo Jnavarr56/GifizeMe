@@ -25,6 +25,8 @@ class DashContainer extends React.Component {
     }
 
     componentDidUpdate() {
+
+        document.querySelector('.col-4').classList.remove('saving');
         
     }
 
@@ -38,8 +40,6 @@ class DashContainer extends React.Component {
     }
 
     getComponentFromIndex(i) {
-
-        console.log('TEAT');
 
         if (i === 0) {
 
