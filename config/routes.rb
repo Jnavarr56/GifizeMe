@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       get "/acquire-user-data/:id" => "logged_in#acquire_user_data"
 
       post "/upload" => "logged_in#upload"
+
+      delete "/delete" => "logged_in#delete"
       
     end
     

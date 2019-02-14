@@ -22,7 +22,7 @@ body {
     animation: FadeIn 1s ease 0s 1 forwards;
 }
 @keyframes FadeIn {
-    100% { opacity: 1;  filter: blur(0px);}
+    100% { opacity: 1;  filter: blur(0px); } 
 }
 .fade-out {
     opacity: 1;

@@ -43,13 +43,13 @@ class DashContainer extends React.Component {
 
         if (i === 0) {
 
-            return <GifIndex sendDialog={this.props.sendDialog}findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
+            return <GifIndex sendDialog={this.props.sendDialog} findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
 
         }
 
         else if (i === 1) {
 
-            return <GifEdit findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
+            return <GifEdit delete={this.props.delete} findMakeAGif={this.findMakeAGif} masterState={this.props.masterState}/>
 
         }
 

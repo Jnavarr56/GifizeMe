@@ -1,10 +1,10 @@
 import React from 'react'
-import moment from 'moment'
 
-class RenderedGif extends React.Component {
+class RenderedGifEdit extends React.Component {
 
     constructor(props) {
         super(props);
+        
     }
 
     render() {
@@ -16,14 +16,14 @@ class RenderedGif extends React.Component {
 
 
         return(
-            <div className={`card ${(moment.utc().diff(moment.utc(this.props.createdAt))/60000) <= 0.25 ? 'just-created' : 'fade-in'}`} style={this.props.delay}>
+            <div className="card fade-in" style={this.props.delay}>
                 <img className="card-img-top" src={this.props.src} alt="Card image cap" />
                 <span className="card-name">{this.props.name}</span>
                 <div className="card-body">
                     <p className="card-text">
                         {this.props.emoji}
                         <br />
-                        <i onClick={() => this.props.sendDialog(this.props.src)} className="fab fa-facebook-messenger"></i>
+                        <button onClick={()=> this.props.delete(this.props.updateId)} className="btn btn-danger"><i className="far fa-trash-alt"></i></button>      
                     </p>
                 </div>
             </div>
@@ -32,4 +32,4 @@ class RenderedGif extends React.Component {
     }
 }
 
-export default RenderedGif;
+export default RenderedGifEdit;

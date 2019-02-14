@@ -306,7 +306,7 @@
         min-height: 35%;
         width: 20%;
         margin: 5px;
-        transition: .25s ease;
+        transition: background-color .25s ease;
         img {
             background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/f1055231234507.564a1d234bfb6.gif");
             background-attachment: fixed;
@@ -347,13 +347,23 @@
     display: none !important;
 }
 .just-created {
-    animation: JustCreated .25s ease 0s 3;
+    animation: JustCreated 1s ease 0s forwards;
+    opacity: 0;
+    filter: blur(10px);
 }
 @keyframes JustCreated {
     0% {
         background-color: blue;
     }
+    33% {
+        background-color: white;
+    }
+    66% {
+        background-color: blue;
+    }
     100% {
         background-color: white;
+        opacity: 1;
+        filter: blur(0px);
     }
 }

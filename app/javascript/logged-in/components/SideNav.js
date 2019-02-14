@@ -7,7 +7,7 @@ class SideNav extends React.Component {
         super(props);
         this.state = {
             0: { navText: 'Your Gifs', component: 'GifIndex' },
-            1: { navText: 'Make Changes', component: 'GifEdit' },
+            1: { navText: 'Edit', component: 'GifEdit' },
             2: { navText: 'Create a Gif', component: 'GifCreate' }
         }
     }

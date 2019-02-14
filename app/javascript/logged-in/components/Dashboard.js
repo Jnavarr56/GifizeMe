@@ -15,6 +15,7 @@ class Dashboard extends React.Component {
 
         this.sendDialog = this.sendDialog.bind(this);
         this.performDataFetch = this.performDataFetch.bind(this);
+        this.performDelete = this.performDelete.bind(this);
 
     }
 
@@ -63,7 +64,37 @@ class Dashboard extends React.Component {
 
     }
 
+    performDelete(i) {
 
+        const dash = this;
+
+        let token = document.getElementsByName('csrf-token')[0].getAttribute('content');
+        axios.defaults.headers.common['X-CSRF-Token'] = token;
+        axios.defaults.headers.common['Accept'] = 'application/json';
+
+        axios.delete('/delete', {
+
+            data: { delete_id: i  }
+
+        }).then(function(response) {
+
+            console.log(response);
+
+            if (response.data.user_gifs.gifs) {
+
+                response.data.user_gifs.gifs = response.data.user_gifs.gifs.sort((a, b) => b.gif_record.id - a.gif_record.id);
+
+            }
+
+            setTimeout(() => dash.setState(response.data), 1000);  
+
+        }).catch(function(response) {
+
+            console.log(response);
+
+        });
+
+    }
 
     componentDidMount() {
 
@@ -99,48 +130,22 @@ class Dashboard extends React.Component {
 
     }
 
-
     render () {
 
-        
+        return (
 
-
-            return (
-
-                <React.Fragment>
-                    <Navbar userImg={ this.state.user_data ? this.state.user_data.img : null} signedIn={this.props.sessionStatus} linkPath={this.props.location.pathname} />
-                    <Particles className={`particles ${Object.keys(this.state).length ? 'fade-in-fast' : 'be-out'}`} params={ particleConfig2 } />
-                    <div className="container-fluid">
-                        <div className="row"> 
-                            { !Object.keys(this.state).length ? <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div> : <DashContainer shouldRedirect={this.state.shouldRedirect ? true : false} regainData={this.performDataFetch} sendDialog={this.sendDialog} masterState={this.state}/> } 
-                        </div>
+            <React.Fragment>
+                <Navbar userImg={ this.state.user_data ? this.state.user_data.img : null} signedIn={this.props.sessionStatus} linkPath={this.props.location.pathname} />
+                <Particles className={`particles ${Object.keys(this.state).length ? 'fade-in-fast' : 'be-out'}`} params={ particleConfig2 } />
+                <div className="container-fluid">
+                    <div className="row"> 
+                        { !Object.keys(this.state).length ? <div className="spinner-container fade-in-fast"><span className="spinner-border spinner-fade-getting-gifs text-light" role="status" aria-hidden="true"></span></div> : <DashContainer delete={this.performDelete}shouldRedirect={this.state.shouldRedirect ? true : false} regainData={this.performDataFetch} sendDialog={this.sendDialog} masterState={this.state}/> } 
                     </div>
-                </React.Fragment>
+                </div>
+            </React.Fragment>
 
-            );
+        );
         
-
-        
-
-        /*
-
-         
-
-                <React.Fragment>
-                    <Navbar signedIn={this.props.sessionStatus} linkPath={this.props.location.pathname} />
-                    <Particles className="particles fade-in" params={ particleConfig2 } />
-                    <UserImg className="fade-in" user={this.state.user_data}/>
-                    <div className="container-fluid">
-                        <div className="row">
-                            <h1 className="fade-in">This is the logged in page!</h1>
-                            <a className="btn btn-danger fade-in" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-                        </div>
-                    </div>
-                </React.Fragment>
-            
-        */
-
-
     }
     
 }

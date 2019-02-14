@@ -136,11 +136,9 @@ class GifCreate extends React.Component {
 
     handleServerTest() {
 
-        
-
-        let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
-        axios.defaults.headers.common['X-CSRF-Token'] = token
-        axios.defaults.headers.common['Accept'] = 'application/json'
+        let token = document.getElementsByName('csrf-token')[0].getAttribute('content');
+        axios.defaults.headers.common['X-CSRF-Token'] = token;
+        axios.defaults.headers.common['Accept'] = 'application/json';
 
         let obj = this;
 
@@ -153,7 +151,8 @@ class GifCreate extends React.Component {
            data
 
         ,
-        { headers: { 'Content-Type' : 'multipart/form-data;'} }
+        //{ headers: { 'Content-Type' : 'multipart/form-data;'} }
+        { headers: { 'Content-Type' : 'image/gif;'} }
         ).then(function (response) {
 
             if (response.data.status === "SUCCESS") {
