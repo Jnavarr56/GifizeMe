@@ -72,7 +72,7 @@ dataURItoBlob(dataURI) {
 I passed the base64 string produced by the Gifshot object's record method to the function in order to get the blob I needed. 
 
 ##### STEP 2
-The next step was to attach the blob to the object sent in the post request. However, sending blobs isn't as simple as send other kinds of data like strings or numbers. 
+The next step was to attach the blob to the object sent in the post request. However, sending blobs isn't as simple sending other kinds of data like strings or numbers. 
 
 One way to send a blob to the server via post request is to create a FormData object, append the blob to the FormData object, and send that object as the data in the post request. Below is a demonstration of this logic as a method of a React component:
 
@@ -127,7 +127,7 @@ emoji_id = upload_params.keys()[0].to_i
 
 #The id of the emoji character is the key in the upload_params object corresponding to the 
 #blob, so we use that to get the blob from the upload_params object.
-#Then, we attach it to the new gif object!
+#Then, we attach the blob to the new gif object!
 test.gif_file.attach(upload_params["#{emoji_id}"])
 ```
 
