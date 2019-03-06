@@ -22,7 +22,7 @@ GifizeMe is a full stack web app that lets you record and save gifs of yourself,
    - Yarn
 
 ###### Other libraries/frameworks/etc include:
-- [Axios] (https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 - [Devise](https://www.google.com) - Flexible MVC based user authentication solution for Rails.
 - [gemoji](https://github.com/github/gemoji) - A ruby gem providing a library containing character information about native emoji.
 
