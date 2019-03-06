@@ -151,7 +151,6 @@ class GifCreate extends React.Component {
            data
 
         ,
-        //{ headers: { 'Content-Type' : 'multipart/form-data;'} }
         { headers: { 'Content-Type' : 'image/gif;'} }
         ).then(function (response) {
 

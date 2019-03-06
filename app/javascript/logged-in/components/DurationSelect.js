@@ -9,7 +9,7 @@ class DurationSelect extends React.Component {
 
     render() {
 
-        const arrSecs = []
+        const arrSecs = [];
         let i = 1;
 
         while (arrSecs.length < 15) { arrSecs.push(i); i++; }
