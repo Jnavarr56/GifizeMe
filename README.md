@@ -45,7 +45,7 @@ This project required working with blobs and base64 file representations, which 
 2) Send the blob via a post request with Axios to the rails server.
 3) Respond on the back-end by attaching the blob to a record.
 
-STEP 1
+##### STEP 1
 The Gifshot library that creates the gifs produces a base64 version of the gifs and I needed a blob format so that I could send the gif via a post request to the server.  
 
 The following function takes in a dataURI string and produces a blob (credit to [davoclavo](https://gist.github.com/davoclavo/4424731)).
@@ -71,7 +71,7 @@ dataURItoBlob(dataURI) {
 ```
 I passed the base64 string produced by the Gifshot object's record method to the function in order to get the blob I needed. 
 
-STEP 2
+##### STEP 2
 The next step was to attach the blob to the object sent in the post request. However, sending blobs isn't as simple as send other kinds of data like strings or numbers. 
 
 One way to send a blob to the server via post request is to create a FormData object, append the blob to the FormData object, and send that object as the data in the post request. Below is a demonstration of this logic as a method of a React component:
@@ -115,7 +115,7 @@ One way to send a blob to the server via post request is to create a FormData ob
     }
 ```
 
-STEP 3
+##### STEP 3
 In my rails controller in the method handling the '/upload' route:
 
 ```
