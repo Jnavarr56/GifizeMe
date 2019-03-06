@@ -7,7 +7,7 @@ GifizeMe is a full stack web app that lets you record and save gifs of yourself,
 ###### CommuteCompare is deployed on Heroku and uses:
 
   - React
-  - [React Router] (https://github.com/ReactTraining/react-router)
+  - [React Router](https://github.com/ReactTraining/react-router)
   - Amazon Web Services (S3 Bucket)
   - Ruby on Rails 5.2.2
   - [Gifshot](https://github.com/yahoo/gifshot)
